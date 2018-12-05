@@ -1,0 +1,27 @@
+{
+  "name": "yoga-mainpage",
+  "version": "1.0.0",
+  "description": "yoga-main-page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paveligorevich55/yoga-mainpage.git"
+  },
+  "author": "Pavel Konchych",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paveligorevich55/yoga-mainpage/issues"
+  },
+  "homepage": "https://github.com/paveligorevich55/yoga-mainpage#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2"
+  }
+}
