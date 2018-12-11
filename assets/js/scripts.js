@@ -43,66 +43,67 @@ $(document).ready( function () {
 	  $(this).closest(card).find(cardHeading).css('border', '1px solid rgb(83, 99, 219)');
 	});
 
-	(function ($){
-		jQuery.fn.quoteTabs = function(options){
-
-			var createTabs = function(){
-				tabs = this;
-				i = 0;
-
-				showPage = function (i){
-					$(tabs).children('div').children('div').hide();
-					$(tabs).children('div').children('div').eq(i).show();
-					$(tabs).children('ul').children('li').removeClass('active');
-					$(tabs).children('ul').children('li').eq(i).addClass('active');
-				}
-
-				showPage(0);
-
-				$(tabs).children('ul').children('li').each(function (index, element){
-					$(element).attr("data-page", i);
-					i++;
-				});
-
-				$(tabs).children('ul').children('li').on('click', function(){
-					showPage(parseInt($(this).attr('data-page')));
-				});
-			};
-			return this.each(createTabs);
-		};
+	(function($) {
+	  jQuery.fn.quoteTabs = function(options) {
+	
+	    var createTabs = function() {
+	      tabs = this;
+	      i = 0;
+	
+	      showPage = function(i) {
+	        $(tabs).children('div').children('div').hide();
+	        $(tabs).children('div').children('div').eq(i).show();
+	        $(tabs).children('ul').children('li').removeClass('active');
+	        $(tabs).children('ul').children('li').eq(i).addClass('active');
+	      }
+	
+	      showPage(0);
+	
+	      $(tabs).children('ul').children('li').each(function(index, element) {
+	        $(element).attr("data-page", i);
+	        i++;
+	      });
+	
+	      $(tabs).children('ul').children('li').on('click', function() {
+	        showPage(parseInt($(this).attr('data-page')));
+	      });
+	    };
+	    return this.each(createTabs);
+	  };
 	})(jQuery);
-
+	
 	$('.quotes').quoteTabs();
 	
 	
-	$('.qoute-trash-button.next').on('click', function(){
-        var currentAuthor = $('.quote-author.current'),
-         	currentAuthorIndex = $('.quote-author.current').index(),
-		 	nextAuthorIndex = currentAuthorIndex + 1,
-		 	nextAuthor = $('.quote-author').eq(nextAuthorIndex);
-        currentAuthor.fadeOut(0);
-        currentAuthor.removeClass('current');
-
-        if(nextAuthorIndex == ($('.quote-author:last').index()+1)){
-            $('.quote-author').eq(0).fadeIn(1000);
-            $('.quote-author').eq(0).addClass('current');
-        } else {
-            nextAuthor.fadeIn(1000);
-            nextAuthor.addClass('current');
-        }
-    });
-
-    $('.qoute-trash-button.prev').on('click', function(){
-        var currentAuthor = $('.quote-author.current'),
-            currentAuthorIndex = $('.quote-author.current').index(),
-            prevAuthorIndex = currentAuthorIndex - 1,
-            prevAuthor = $('.quote-author').eq(prevAuthorIndex);
-        
-        currentAuthor.fadeOut(0);
-        currentAuthor.removeClass('current');
-        prevAuthor.fadeIn(1000);
-        prevAuthor.addClass('current');
-    })
-
+	$('.qoute-trash-button.next').on('click', function() {
+	  var $quote = $(this).closest(".quote");
+	  var currentAuthor = $quote.find('.quote-author.current'),
+	    currentAuthorIndex = $quote.find('.quote-author.current').index(),
+	    nextAuthorIndex = currentAuthorIndex + 1,
+	    nextAuthor = $quote.find('.quote-author').eq(nextAuthorIndex);
+	  currentAuthor.fadeOut(0);
+	  currentAuthor.removeClass('current');
+	
+	  if (nextAuthorIndex == ($quote.find('.quote-author:last').index() + 1)) {
+	    $quote.find('.quote-author').eq(0).fadeIn(1000);
+	    $quote.find('.quote-author').eq(0).addClass('current');
+	  } else {
+	    nextAuthor.fadeIn(1000);
+	    nextAuthor.addClass('current');
+	  }
+	});
+	
+	$('.qoute-trash-button.prev').on('click', function() {
+	  var $quote = $(this).closest(".quote");
+	  var currentAuthor = $quote.find('.quote-author.current'),
+	    currentAuthorIndex = $quote.find('.quote-author.current').index(),
+	    prevAuthorIndex = currentAuthorIndex - 1,
+	    prevAuthor = $quote.find('.quote-author').eq(prevAuthorIndex);
+	
+	  currentAuthor.fadeOut(0);
+	  currentAuthor.removeClass('current');
+	  prevAuthor.fadeIn(1000);
+	  prevAuthor.addClass('current');
+	})
 });
 
